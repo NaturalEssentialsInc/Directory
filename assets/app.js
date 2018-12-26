@@ -143,20 +143,36 @@ $(document).ready(function() {
   $("#search").on("click", function(e) {
     e.preventDefault();
     var query = encodeURIComponent($("#myInput").val().trim());
-    var url = "htts://effective-pancake.firebaseio.com/directory.json?orderBy=\"full_name\"&equalTo=\"" + query + "\"";
+    var url = "https://effective-pancake.firebaseio.com/directory.json?orderBy=\"full_name\"&equalTo=\"" + query + "\"";
+    var link = "file:///C:/Users/ian.goodnight/Documents/workbench/effective-pancake/index.html#search-results";
+    // document.location.href = link;
+    $("#displayTabs li:last-child a").tab('show');
 
-    getData(query, url);
+    getData(url);
 
     console.log(query);
 
   })
 
-  function getData(query, url) {
+  function getData(url) {
+
     $.ajax({
       url: url,
-      method: "GET"
-    }).done(function(data) {
-      console.log(JSON.parse(data));
+      type: "GET",
+      dataType: "JSONP",
+      // method: "GET"
+      success: function(response) {
+
+        const getNestedObject = (nestedObj, pathArr) => {
+          return pathArr.reduce((obj, key) =>
+            (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
+        }
+
+        const name = getNestedObject(response, ['full_name']);
+
+        $("#display").append("<div class='row'><div class='col-sm-6'>Name:\nEmail:\nDepartment:\nExtension:</div><div class='col-sm-6'>" + name + "</div></div>");
+        console.log(response);
+      }
     });
 
   };

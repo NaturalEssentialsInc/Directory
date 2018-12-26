@@ -27,8 +27,8 @@
 				<h1>Company Directory</h1>
 			</div>
 			<div class="navbar" id="tabular">
-				<ul class="nav nav-tabs" id="displayTabs" role="tablist">
-				  <li class="nav-item nav-fill">
+				<ul class="nav nav-tabs nav-fill" id="displayTabs" role="tablist">
+				  <li class="nav-item">
 				    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Directory</a>
 				  </li>
 				  <li class="nav-item nav-fill">
@@ -38,7 +38,7 @@
 				    <a class="nav-link" id="extensions-tab" data-toggle="tab" href="#extensions" role="tab" aria-controls="extensions" aria-selected="false">Extensions</a>
 				  </li>
 				  <li class="nav-item nav-fill">
-				    <a class="nav-link disabled" href="#">Disabled</a>
+				    <a class="nav-link" id="search-tab" data-toggle="tab" href="#search-results" role="tab" aria-controls="search-results" aria-selected="false">Find</a>
 				  </li>
 				</ul>
 		    <form class="form-inline my-2 my-lg-0">
@@ -89,6 +89,12 @@
 							</thead>
 							<tbody></tbody>
 						</table>	
+					</div>				
+				</div>
+				<div class="tab-pane fade results-table" id="search-results" role="tabpanel" aria-labelledby="search-results-tab">
+					<div class="container">
+						<h2 class="text-center table-label">Find</h2>						
+						<div id="display"></div>	
 					</div>				
 				</div>
 			</div>			
