@@ -140,12 +140,13 @@ $(document).ready(function() {
     dataSource: autoOptions
   });
 
-  $("#search").on("click", function() {
+  $("#search").on("click", function(e) {
+    e.preventDefault();
     var query = encodeURIComponent($("#myInput").val().trim());
     var url = "htts://effective-pancake.firebaseio.com/directory.json?orderBy=\"full_name\"&equalTo=\"" + query + "\"";
 
     getData(query, url);
-    
+
     console.log(query);
 
   })
