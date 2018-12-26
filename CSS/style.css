@@ -1,0 +1,55 @@
+body {
+	background-color: grey;
+	background-image: url('../assets/images/clean-gray-paper.png');
+}
+
+#content {
+	background-color: #f4fcff;
+	border: 1px solid skyblue;
+
+}
+
+.results-table {
+	padding: 50px 10px;
+}
+
+.table-label {
+	padding-bottom: 25px;
+}
+
+#search {
+	margin-left: 8px;
+}
+
+#tabular {
+	padding-top: 20px;
+	padding-bottom: 0px;
+}
+
+.tab-content {
+	background-color: white;
+
+}
+
+.head {
+  background-image: url('../assets/images/clean-gray-paper.png');
+}
+
+.footer {
+  background-image: url('../assets/images/clean-gray-paper.png');	
+  height: 100px;
+}
+
+a.report:link, a.report:visited, a.report:hover, a.report:active {
+	color: #6c757d;
+	text-decoration: none;
+}
+
+a.nav-link:link, a.nav-link:visited, a.nav-link:hover, a.nav-link:active {
+	color: black;
+}
+
+.masthead {
+	text-align: center;
+	padding: 40px 0px 20px 0px;
+}

@@ -18,6 +18,9 @@ $(document).ready(function() {
   let emailToggle = true;
   let extensionToggle = true;
   let directoryToggle = true;
+  let groupToggle = true;
+  let autoOptions = [];
+  let autoId = 1;
 
   db.ref().on("value", function(snapshot) {
     console.log(snapshot.val());
@@ -28,22 +31,39 @@ $(document).ready(function() {
     directoryToggle = !directoryToggle;
 
     $("#directory-table > tbody").empty();
+    $("#email-table > tbody").empty();   
+    $("#extension-table > tbody").empty();
+
     populate();
-  })
+  });
 
   $("#email-toggle").click(function() {
     emailToggle = !emailToggle;
 
+    $("#directory-table > tbody").empty();
     $("#email-table > tbody").empty();
+    $("#extension-table > tbody").empty();
+
     populate();
   });
 
   $("#extension-toggle").click(function() {
     extensionToggle = !extensionToggle;
 
+    $("#directory-table > tbody").empty();
+    $("#email-table > tbody").empty();
     $("#extension-table > tbody").empty();
+
     populate();
-  })
+  });
+
+  $("#group-toggle").click(function() {
+    groupToggle = !groupToggle;
+
+    $("#directory-table > tbody").empty();
+
+    groupPopulate();
+  });
 
   function populate() {
     directory.orderByChild("full_name").on("child_added", function(childSnapshot, prevChildKey) {
@@ -52,6 +72,14 @@ $(document).ready(function() {
       var email = childSnapshot.val().email;
       var extension = childSnapshot.val().extension;
       var additional = childSnapshot.val().additional_email;
+      
+      var data = {};
+      data.id = autoId;
+      data.name = name;
+      data.ignore = false;
+      
+      autoOptions.push(data);
+      autoId++;
 
       directoryToggle ? $("#directory-table > tbody").append("<tr>" + 
                                            "<td>" + name + "</td>" +
@@ -88,6 +116,48 @@ $(document).ready(function() {
 
       console.log(childSnapshot.val());
     });
+  };
+
+  function groupPopulate() {
+    directory.orderByChild("department_number").on("child_added", function(childSnapshot, prevChildKey) {
+      var name = childSnapshot.val().full_name;
+      var department = childSnapshot.val().department_number + " - " + childSnapshot.val().department_description;
+      
+      groupToggle ? $("#directory-table > tbody").append("<tr>" +
+                                           "<td>" + name + "</td>" +
+                                           "<td>" + department + "</td>" +
+                                         "</tr>"):
+                          $("#directory-table > tbody").prepend("<tr>" + 
+                                           "<td>" + name + "</td>" +
+                                           "<td>" + department + "</td>" +
+                                         "</tr>");                                   
+    });
+  };
+
+  $("#myInput").autocomplete({
+    nameProperty: 'name',
+    valueField: '#hidden-field',
+    dataSource: autoOptions
+  });
+
+  $("#search").on("click", function() {
+    var query = encodeURIComponent($("#myInput").val().trim());
+    var url = "htts://effective-pancake.firebaseio.com/directory.json?orderBy=\"full_name\"&equalTo=\"" + query + "\"";
+
+    getData(query, url);
+    
+    console.log(query);
+
+  })
+
+  function getData(query, url) {
+    $.ajax({
+      url: url,
+      method: "GET"
+    }).done(function(data) {
+      console.log(JSON.parse(data));
+    });
+
   };
 
   populate();
