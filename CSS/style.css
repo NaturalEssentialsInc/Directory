@@ -6,7 +6,6 @@ body {
 #content {
 	background-color: #f4fcff;
 	border: 1px solid skyblue;
-
 }
 
 .results-table {
@@ -17,8 +16,8 @@ body {
 	padding-bottom: 25px;
 }
 
-#search {
-	margin-left: 8px;
+.search {
+	margin-left: 10px;
 }
 
 #tabular {
@@ -28,6 +27,10 @@ body {
 
 .tab-content {
 	background-color: white;
+	border-left: 1px solid #dee2e6;
+	border-right: 1px solid #dee2e6;
+	border-bottom: 1px solid #dee2e6;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
 }
 
 .head {
@@ -56,6 +59,9 @@ a.nav-link:link, a.nav-link:visited, a.nav-link:hover, a.nav-link:active {
 #display {
 	border: 1px solid black;
 	padding: 75px;
+	margin-top: 50px;
+	width: 75%;
+	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
 }
 
 pre#display {

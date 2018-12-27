@@ -20,7 +20,9 @@ $(document).ready(function() {
   let directoryToggle = true;
   let groupToggle = true;
   let autoOptions = [];
+  let autoGroups = [];
   let autoId = 1;
+  let groupId = 1;
 
   db.ref().on("value", function(snapshot) {
     console.log(snapshot.val());
@@ -81,6 +83,16 @@ $(document).ready(function() {
       autoOptions.push(data);
       autoId++;
 
+      var groupData = {};
+      groupData.id = groupId;
+      groupData.name = department;
+      groupData.ignore = false;
+
+      autoGroups.push(groupData);
+      groupId++;
+
+      console.log(JSON.stringify(groupData));
+
       directoryToggle ? $("#directory-table > tbody").append("<tr>" + 
                                            "<td>" + name + "</td>" +
                                            "<td>" + department + "</td>" +
@@ -140,19 +152,59 @@ $(document).ready(function() {
     dataSource: autoOptions
   });
 
+  $("#myInput2").autocomplete({
+    nameProperty: 'name',
+    valueField: '#hidden-field2',
+    dataSource: autoOptions
+  });
+
+  $("#myInput3").autocomplete({
+    nameProperty: 'name',
+    valueField: '#hidden-field3',
+    dataSource: autoGroups,
+    distinct: true
+  });
+
   $("#search").on("click", function(e) {
     e.preventDefault();
     var query = encodeURIComponent($("#myInput").val().trim());
     var url = "https://effective-pancake.firebaseio.com/directory.json?orderBy=\"full_name\"&equalTo=\"" + query + "\"";
-    var link = "file:///C:/Users/ian.goodnight/Documents/workbench/effective-pancake/index.html#search-results";
-    // document.location.href = link;
     $("#displayTabs li:last-child a").tab('show');
+    $("#display > div").remove();
 
     getData(url);
 
     $("#myInput").val("");
 
-  })
+  });
+
+  $("#search2").on("click", function(e) {
+    e.preventDefault();
+    var query = encodeURIComponent($("#myInput2").val().trim());
+    var url = "https://effective-pancake.firebaseio.com/directory.json?orderBy=\"full_name\"&equalTo=\"" + query + "\"";
+    $("#displayTabs li:last-child a").tab('show');
+    $("#display > div").remove();
+
+    getData(url);
+
+    $("#myInput2").val("");
+
+  });
+
+  $("#search3").on("click", function(e) {
+    e.preventDefault();
+    var inputArr = $("#myInput3").val().trim().split('-');
+    var query = encodeURIComponent(inputArr[0].trim());
+    var url = "https://effective-pancake.firebaseio.com/directory.json?orderBy=\"department_number\"&equalTo=" + parseInt(query);
+    $("#displayTabs li:last-child a").tab('show');
+    $("#display > div").remove();
+
+    getData(url);
+
+    $("#myInput3").val("");
+
+  });
+
 
   function getData(url) {
 
@@ -163,25 +215,27 @@ $(document).ready(function() {
       success: function(response) {
         console.log("response: " + JSON.stringify(response));
 
-        let x;
+        let x = [];
 
         for (var property in response) {
           if (response.hasOwnProperty(property)) {
-            x = response[property];
+            x.push(response[property]);
           };
         };
 
-        let name = x.full_name;
-        let email = x.email;
-        let department = x.department_number + " - " + x.department_description;
-        let extension = x.extension;
+        for (i in x) {
+          let name = x[i].full_name;
+          let email = x[i].email;
+          let department = x[i].department_number + " - " + x[i].department_description;
+          let extension = x[i].extension;
 
-        $("#display").append("<div class='row'><div class='col-sm-6 text-right'><pre>Name:\nEmail:\nDepartment:\nExtension:</pre></div><div class='col-sm-6'><pre>" + 
-          name + "\n" + 
-          email + "\n" +
-          department + "\n" +
-          extension + "</pre></div></div>");
-        console.log(response);
+          $("#display").append("<div class='row'><table class='table table-sm'><tr><th scope='row'>Name:    </td><td>" +
+            name + "</td></tr><tr><th scope='row'>Email:    </td><td>" +
+            email + "</td></tr><tr><th scope='row'>Department:    </td><td>" +
+            department + "</td></tr><tr><th scope='row'>Extension:    </td><td>" +
+            extension + "</td></tr></table><hr /></div>");
+          console.log(response);
+        };
       }
     });
 
