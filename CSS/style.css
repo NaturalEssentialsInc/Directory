@@ -28,7 +28,6 @@ body {
 
 .tab-content {
 	background-color: white;
-
 }
 
 .head {
@@ -52,4 +51,13 @@ a.nav-link:link, a.nav-link:visited, a.nav-link:hover, a.nav-link:active {
 .masthead {
 	text-align: center;
 	padding: 40px 0px 20px 0px;
+}
+
+#display {
+	border: 1px solid black;
+	padding: 75px;
+}
+
+pre#display {
+	overflow-x: visible;
 }

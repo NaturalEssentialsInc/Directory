@@ -150,7 +150,7 @@ $(document).ready(function() {
 
     getData(url);
 
-    console.log(query);
+    $("#myInput").val("");
 
   })
 
@@ -160,17 +160,27 @@ $(document).ready(function() {
       url: url,
       type: "GET",
       dataType: "JSONP",
-      // method: "GET"
       success: function(response) {
+        console.log("response: " + JSON.stringify(response));
 
-        const getNestedObject = (nestedObj, pathArr) => {
-          return pathArr.reduce((obj, key) =>
-            (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
-        }
+        let x;
 
-        const name = getNestedObject(response, ['full_name']);
+        for (var property in response) {
+          if (response.hasOwnProperty(property)) {
+            x = response[property];
+          };
+        };
 
-        $("#display").append("<div class='row'><div class='col-sm-6'>Name:\nEmail:\nDepartment:\nExtension:</div><div class='col-sm-6'>" + name + "</div></div>");
+        let name = x.full_name;
+        let email = x.email;
+        let department = x.department_number + " - " + x.department_description;
+        let extension = x.extension;
+
+        $("#display").append("<div class='row'><div class='col-sm-6 text-right'><pre>Name:\nEmail:\nDepartment:\nExtension:</pre></div><div class='col-sm-6'><pre>" + 
+          name + "\n" + 
+          email + "\n" +
+          department + "\n" +
+          extension + "</pre></div></div>");
         console.log(response);
       }
     });
