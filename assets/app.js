@@ -24,10 +24,10 @@ $(document).ready(function() {
   let autoId = 1;
   let groupId = 1;
 
-  db.ref().on("value", function(snapshot) {
-    console.log(snapshot.val());
+  // db.ref().on("value", function(snapshot) {
+  //   console.log(snapshot.val());
 
-  });
+  // });
 
   $("#directory-toggle").click(function() {
     directoryToggle = !directoryToggle;
@@ -35,6 +35,11 @@ $(document).ready(function() {
     $("#directory-table > tbody").empty();
     $("#email-table > tbody").empty();   
     $("#extension-table > tbody").empty();
+
+    autoOptions = [];
+    autoGroups = [];
+    autoId = 1;
+    groupId = 1;
 
     populate();
   });
@@ -46,6 +51,11 @@ $(document).ready(function() {
     $("#email-table > tbody").empty();
     $("#extension-table > tbody").empty();
 
+    autoOptions = [];
+    autoGroups = [];
+    autoId = 1;
+    groupId = 1;
+
     populate();
   });
 
@@ -56,6 +66,11 @@ $(document).ready(function() {
     $("#email-table > tbody").empty();
     $("#extension-table > tbody").empty();
 
+    autoOptions = [];
+    autoGroups = [];
+    autoId = 1;
+    groupId = 1;
+
     populate();
   });
 
@@ -64,15 +79,23 @@ $(document).ready(function() {
 
     $("#directory-table > tbody").empty();
 
+    autoOptions = [];
+    autoGroups = [];
+    autoId = 1;
+    groupId = 1;
+
     groupPopulate();
   });
 
   function populate() {
     directory.orderByChild("full_name").on("child_added", function(childSnapshot, prevChildKey) {
       var name = childSnapshot.val().full_name;
-      var department = childSnapshot.val().department_number + " - " + childSnapshot.val().department_description;
+      var department = childSnapshot.val().department;
       var email = childSnapshot.val().email;
       var extension = childSnapshot.val().extension;
+      if (childSnapshot.val().additional_extension !== "") {
+        extension = extension + ", " + childSnapshot.val().additional_extension;
+      }
       var additional = childSnapshot.val().additional_email;
       
       var data = {};
@@ -91,7 +114,7 @@ $(document).ready(function() {
       autoGroups.push(groupData);
       groupId++;
 
-      console.log(JSON.stringify(groupData));
+      // console.log(JSON.stringify(groupData));
 
       directoryToggle ? $("#directory-table > tbody").append("<tr>" + 
                                            "<td>" + name + "</td>" +
@@ -126,14 +149,14 @@ $(document).ready(function() {
                                          "</tr>");
       };
 
-      console.log(childSnapshot.val());
+      // console.log(childSnapshot.val());
     });
   };
 
   function groupPopulate() {
     directory.orderByChild("department_number").on("child_added", function(childSnapshot, prevChildKey) {
       var name = childSnapshot.val().full_name;
-      var department = childSnapshot.val().department_number + " - " + childSnapshot.val().department_description;
+      var department = childSnapshot.val().department;
       
       groupToggle ? $("#directory-table > tbody").append("<tr>" +
                                            "<td>" + name + "</td>" +
@@ -226,15 +249,21 @@ $(document).ready(function() {
         for (i in x) {
           let name = x[i].full_name;
           let email = x[i].email;
-          let department = x[i].department_number + " - " + x[i].department_description;
+          if (x[i].additional_email !== "") {
+            email = email + ", " + x[i].additional_email;
+          }
+          let department = x[i].department;
           let extension = x[i].extension;
+          if (x[i].additional_extension !== "") {
+            extension = extension + ", " + x[i].additional_extension;
+          }
 
           $("#display").append("<div class='row'><table class='table table-sm'><tr><th scope='row'>Name:    </td><td>" +
             name + "</td></tr><tr><th scope='row'>Email:    </td><td>" +
             email + "</td></tr><tr><th scope='row'>Department:    </td><td>" +
             department + "</td></tr><tr><th scope='row'>Extension:    </td><td>" +
             extension + "</td></tr></table><hr /></div>");
-          console.log(response);
+          // console.log(response);
         };
       }
     });
