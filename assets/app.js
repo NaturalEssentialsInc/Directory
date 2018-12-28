@@ -15,81 +15,76 @@ $(document).ready(function() {
 
   const db = firebase.database();
   const directory = db.ref("directory");
-  let emailToggle = true;
-  let extensionToggle = true;
   let directoryToggle = true;
-  let groupToggle = true;
   let autoOptions = [];
   let autoGroups = [];
+  let autoLocation = [];
   let autoId = 1;
-  let groupId = 1;
 
   // db.ref().on("value", function(snapshot) {
   //   console.log(snapshot.val());
 
   // });
-
-  $("#directory-toggle").click(function() {
-    directoryToggle = !directoryToggle;
-
+  function clearTables() {
     $("#directory-table > tbody").empty();
-    $("#email-table > tbody").empty();   
-    $("#extension-table > tbody").empty();
+    $("#contact-table > tbody").empty();   
 
     autoOptions = [];
     autoGroups = [];
+    autoLocation = [];
     autoId = 1;
     groupId = 1;
 
-    populate();
+    directoryToggle = !directoryToggle;
+  };
+
+  $(".last-toggle").click(function() {
+
+    clearTables();
+
+    populate("last_name");
+  });
+
+  $(".first-toggle").click(function() {
+
+    clearTables();
+
+    populate("first_name");
+  });
+
+  $("#location-toggle").click(function() {
+
+    clearTables();
+
+    populate("building_location");
   });
 
   $("#email-toggle").click(function() {
-    emailToggle = !emailToggle;
 
-    $("#directory-table > tbody").empty();
-    $("#email-table > tbody").empty();
-    $("#extension-table > tbody").empty();
+    clearTables();
 
-    autoOptions = [];
-    autoGroups = [];
-    autoId = 1;
-    groupId = 1;
-
-    populate();
+    populate("email");
   });
 
   $("#extension-toggle").click(function() {
-    extensionToggle = !extensionToggle;
 
-    $("#directory-table > tbody").empty();
-    $("#email-table > tbody").empty();
-    $("#extension-table > tbody").empty();
+    clearTables();
 
-    autoOptions = [];
-    autoGroups = [];
-    autoId = 1;
-    groupId = 1;
-
-    populate();
+    populate("extension");
   });
 
   $("#group-toggle").click(function() {
-    groupToggle = !groupToggle;
 
-    $("#directory-table > tbody").empty();
+    clearTables();
 
-    autoOptions = [];
-    autoGroups = [];
-    autoId = 1;
-    groupId = 1;
-
-    groupPopulate();
+    populate("department_number");
   });
 
-  function populate() {
-    directory.orderByChild("full_name").on("child_added", function(childSnapshot, prevChildKey) {
+  function populate(child) {
+    directory.orderByChild(child).on("child_added", function(childSnapshot, prevChildKey) {
       var name = childSnapshot.val().full_name;
+      var lastName = childSnapshot.val().last_name;
+      var firstName = childSnapshot.val().first_name;
       var department = childSnapshot.val().department;
       var email = childSnapshot.val().email;
       var extension = childSnapshot.val().extension;
@@ -97,6 +92,7 @@ $(document).ready(function() {
         extension = extension + ", " + childSnapshot.val().additional_extension;
       }
       var additional = childSnapshot.val().additional_email;
+      var location = childSnapshot.val().building_location;
       
       var data = {};
       data.id = autoId;
@@ -104,68 +100,55 @@ $(document).ready(function() {
       data.ignore = false;
       
       autoOptions.push(data);
-      autoId++;
 
       var groupData = {};
-      groupData.id = groupId;
+      groupData.id = autoId;
       groupData.name = department;
       groupData.ignore = false;
 
       autoGroups.push(groupData);
-      groupId++;
+
+      var locationData = {};
+      locationData.id = autoId;
+      locationData.name = location;
+      locationData.ignore = false;
+
+      autoLocation.push(locationData);
+
+      autoId++;
 
       // console.log(JSON.stringify(groupData));
 
       directoryToggle ? $("#directory-table > tbody").append("<tr>" + 
-                                           "<td>" + name + "</td>" +
+                                           "<td>" + lastName + ",</td>" +
+                                           "<td>" + firstName + "</td>" +                                           
                                            "<td>" + department + "</td>" +
+                                           "<td>" + location + "</td>" +                                           
                                          "</tr>"):
                           $("#directory-table > tbody").prepend("<tr>" + 
-                                           "<td>" + name + "</td>" +
+                                           "<td>" + lastName + ",</td>" +
+                                           "<td>" + firstName + "</td>" +
                                            "<td>" + department + "</td>" +
+                                           "<td>" + location + "</td>" +                                                                                      
                                          "</tr>");
 
       if (email) {
-        emailToggle ? $("#email-table > tbody").append("<tr>" + 
-                                           "<td>" + name + "</td>" +
+        directoryToggle ? $("#contact-table > tbody").append("<tr>" + 
+                                           "<td>" + lastName + "</td>" +
+                                           "<td>" + firstName + "</td>" +
                                            "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + email +"' target='blank'>" + email + "</a></td>" +
                                            "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + additional +"' target='blank'>" + additional + "</td>" +
-                                         "</tr>"):
-                      $("#email-table > tbody").prepend("<tr>" + 
-                                           "<td>" + name + "</td>" +
-                                           "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + email +"' target='blank'>" + email + "</a></td>" +
-                                           "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + additional +"' target='blank'>" + additional + "</td>" +
-                                         "</tr>");
-      };
-
-      if (extension) {
-        extensionToggle ? $("#extension-table > tbody").append("<tr>" + 
-                                           "<td>" + name + "</td>" +
                                            "<td>" + extension + "</td>" +
                                          "</tr>"):
-                          $("#extension-table > tbody").prepend("<tr>" + 
-                                           "<td>" + name + "</td>" +
+                      $("#contact-table > tbody").prepend("<tr>" + 
+                                           "<td>" + lastName + "</td>" +
+                                           "<td>" + firstName + "</td>" +                                           
+                                           "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + email +"' target='blank'>" + email + "</a></td>" +
+                                           "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + additional +"' target='blank'>" + additional + "</td>" +
                                            "<td>" + extension + "</td>" +
                                          "</tr>");
       };
 
-      // console.log(childSnapshot.val());
-    });
-  };
-
-  function groupPopulate() {
-    directory.orderByChild("department_number").on("child_added", function(childSnapshot, prevChildKey) {
-      var name = childSnapshot.val().full_name;
-      var department = childSnapshot.val().department;
-      
-      groupToggle ? $("#directory-table > tbody").append("<tr>" +
-                                           "<td>" + name + "</td>" +
-                                           "<td>" + department + "</td>" +
-                                         "</tr>"):
-                          $("#directory-table > tbody").prepend("<tr>" + 
-                                           "<td>" + name + "</td>" +
-                                           "<td>" + department + "</td>" +
-                                         "</tr>");                                   
     });
   };
 
@@ -188,6 +171,13 @@ $(document).ready(function() {
     distinct: true
   });
 
+  $("#myInput4").autocomplete({
+    nameProperty: 'name',
+    valueField: '#hidden-field4',
+    dataSource: autoLocation,
+    distinct: true
+  });
+
   $("#search").on("click", function(e) {
     e.preventDefault();
     var query = encodeURIComponent($("#myInput").val().trim());
@@ -206,8 +196,9 @@ $(document).ready(function() {
     var query = encodeURIComponent($("#myInput2").val().trim());
     var url = "https://effective-pancake.firebaseio.com/directory.json?orderBy=\"full_name\"&equalTo=\"" + query + "\"";
     $("#displayTabs li:last-child a").tab('show');
-    $("#display > div").remove();
-
+    $("#default-message").text("");
+    $("#items").empty();
+    // console.log("url: " + url);
     getData(url);
 
     $("#myInput2").val("");
@@ -220,14 +211,28 @@ $(document).ready(function() {
     var query = encodeURIComponent(inputArr[0].trim());
     var url = "https://effective-pancake.firebaseio.com/directory.json?orderBy=\"department_number\"&equalTo=" + parseInt(query);
     $("#displayTabs li:last-child a").tab('show');
-    $("#display > div").remove();
-
+    $("#default-message").text("");
+    $("#items").empty();
+    // console.log("url: " + url);
     getData(url);
 
     $("#myInput3").val("");
 
   });
 
+  $("#search4").on("click", function(e) {
+    e.preventDefault();
+    var query = encodeURIComponent($("#myInput4").val().trim());
+    var url = "https://effective-pancake.firebaseio.com/directory.json?orderBy=\"building_location\"&equalTo=\"" + query + "\"";
+    $("#displayTabs li:last-child a").tab('show');
+    $("#default-message").text("");
+    $("#items").empty();
+    console.log("url: " + url);
+    getData(url);
+
+    $("#myInput4").val("");
+
+  });
 
   function getData(url) {
 
@@ -244,7 +249,7 @@ $(document).ready(function() {
           if (response.hasOwnProperty(property)) {
             x.push(response[property]);
           };
-        };
+        };       
 
         for (i in x) {
           let name = x[i].full_name;
@@ -257,18 +262,21 @@ $(document).ready(function() {
           if (x[i].additional_extension !== "") {
             extension = extension + ", " + x[i].additional_extension;
           }
+          let location = x[i].building_location;
 
-          $("#display").append("<div class='row'><table class='table table-sm'><tr><th scope='row'>Name:    </td><td>" +
-            name + "</td></tr><tr><th scope='row'>Email:    </td><td>" +
-            email + "</td></tr><tr><th scope='row'>Department:    </td><td>" +
-            department + "</td></tr><tr><th scope='row'>Extension:    </td><td>" +
-            extension + "</td></tr></table><hr /></div>");
-          // console.log(response);
+          $("#items").append("<tr><th scope='row'>Name:    </td><td>" +
+            name + "</td></tr><tr><th scope='row'>Department:    </td><td>" +
+            department + "</td></tr><tr><th scope='row'>Location:    </td><td>" +
+            location + "</td></tr><tr><th scope='row'>Email:    </td><td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + email +"' target='blank'>" + 
+            email + "</a></td></tr><tr><th scope='row'>Extension:    </td><td>" +
+            extension + "</td></tr><tr><td colspan='2'><hr /></td></tr>");
         };
+
       }
+
     });
 
   };
 
-  populate();
+  populate("last_name");
 });

@@ -29,13 +29,10 @@
 			<div class="navbar" id="tabular">
 				<ul class="nav nav-tabs nav-fill" id="displayTabs" role="tablist">
 				  <li class="nav-item">
-				    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Directory</a>
+				    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Departments</a>
 				  </li>
 				  <li class="nav-item nav-fill">
-				    <a class="nav-link" id="email-tab" data-toggle="tab" href="#email" role="tab" aria-controls="email" aria-selected="false">Email</a>
-				  </li>
-				  <li class="nav-item nav-fill">
-				    <a class="nav-link" id="extensions-tab" data-toggle="tab" href="#extensions" role="tab" aria-controls="extensions" aria-selected="false">Extensions</a>
+				    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
 				  </li>
 				  <li class="nav-item nav-fill">
 				    <a class="nav-link" id="search-tab" data-toggle="tab" href="#search-results" role="tab" aria-controls="search-results" aria-selected="false">Find</a>
@@ -54,37 +51,27 @@
 						<table class="table table-hover table-striped" id="directory-table">
 							<thead>
 								<tr>
-									<th scope="col">Name  <i class="fas fa-filter" id="directory-toggle"></i></th>
+									<th scope="col">Last Name  <i class="fas fa-filter last-toggle"></i></th>
+									<th scope="col">First Name  <i class="fas fa-filter first-toggle"></i></th>									
 									<th scope="col">Department  <i class="fas fa-filter" id="group-toggle"></i></th>
+									<th scope="col">Location  <i class="fas fa-filter" id="location-toggle"></i></th>									
 								</tr>
 							</thead>
 							<tbody></tbody>
 						</table>	
 					</div>
 				</div>
-				<div class="tab-pane fade results-table" id="email" role="tabpanel" aria-labelledby="email-tab">
+				<div class="tab-pane fade results-table" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 					<div class="container">
-						<h2 class="text-center table-label">Email</h2>
-						<table class="table table-hover table-striped" id="email-table">
+						<h2 class="text-center table-label">Contact</h2>						
+						<table class="table table-hover table-striped" id="contact-table">
 							<thead>
 								<tr>
-									<th scope="col">Name  <i class="fas fa-filter" id="email-toggle"></i></th>
-									<th scope="col">Email</th>
-									<th scope="col">Additional Email</th>
-								</tr>
-							</thead>
-							<tbody></tbody>
-						</table>	
-					</div>
-				</div>
-				<div class="tab-pane fade results-table" id="extensions" role="tabpanel" aria-labelledby="extensions-tab">
-					<div class="container">
-						<h2 class="text-center table-label">Extensions</h2>						
-						<table class="table table-hover table-striped" id="extension-table">
-							<thead>
-								<tr>
-									<th scope="col">Name  <i class="fas fa-filter" id="extension-toggle"></i></th>
-									<th scope="col">Extension</th>
+									<th scope="col">Last Name  <i class="fas fa-filter last-toggle"></i></th>
+									<th scope="col">First Name  <i class="fas fa-filter first-toggle"></i></th>
+									<th scope="col">Email  <i class="fas fa-filter" id="email-toggle"></i></th>
+									<th scope="col">Additional Email</th>									
+									<th scope="col">Extension  <i class="fas fa-filter" id="extension-toggle"></i></th>
 								</tr>
 							</thead>
 							<tbody></tbody>
@@ -95,22 +82,34 @@
 					<div class="container">
 						<h2 class="text-center table-label">Find</h2>	
 						<div class="row">
-							<div class="col-sm-6">
+							<div class="col-sm-4">
 						    <form class="form-inline my-2 my-lg-0">
-						      <input id="myInput2" class="form-control mr-sm-2" type="search" placeholder="Search by Name" aria-label="Search">
+						      <input id="myInput2" class="form-control mr-sm-2" type="search" placeholder="Search by Name" aria-label="Search by Name">
 						      <input type="hidden" id="hidden-field2">
 						      <button class="btn btn-outline-success my-2 my-sm-0 search" id="search2" type="submit">Search</button>
 						    </form>
 					    </div>
-					    <div class="col-sm-6">	
+					    <div class="col-sm-4">	
 						    <form class="form-inline my-2 my-lg-0">
-						      <input id="myInput3" class="form-control mr-sm-2" type="search" placeholder="Search Groups" aria-label="Search">
+						      <input id="myInput3" class="form-control mr-sm-2" type="search" placeholder="Search Groups" aria-label="Search Groups">
 						      <input type="hidden" id="hidden-field3">
 						      <button class="btn btn-outline-success my-2 my-sm-0 search" id="search3" type="submit">Search</button>
 						    </form>
-					    </div>	
+					    </div>
+					    <div class="col-sm-4">	
+						    <form class="form-inline my-2 my-lg-0">
+						      <input id="myInput4" class="form-control mr-sm-2" type="search" placeholder="Search Locations" aria-label="Search Locations">
+						      <input type="hidden" id="hidden-field4">
+						      <button class="btn btn-outline-success my-2 my-sm-0 search" id="search4" type="submit">Search</button>
+						    </form>
+					    </div>		
 						</div>					
-						<div id="display" class="container"><div><pre>No Results Found.</pre></div></div>	
+						<div id="display" class="container">
+							<div class="row">
+								<div id="default-message"><pre>No Results Found</pre></div>
+								<table class='table table-sm' id="items"></table>
+							</div>
+						</div>	
 					</div>				
 				</div>
 			</div>			

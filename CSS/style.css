@@ -40,6 +40,7 @@ a.report:link, a.report:visited, a.report:hover, a.report:active {
 	border-right: 1px solid #dee2e6;
 	border-bottom: 1px solid #dee2e6;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
+  margin-bottom: 50px;
 }
 
 .table-label {
@@ -49,6 +50,7 @@ a.report:link, a.report:visited, a.report:hover, a.report:active {
 #content {
 	background-color: #f4fcff;
 	border: 1px solid skyblue;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
 }
 
 #display {
