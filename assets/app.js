@@ -183,7 +183,8 @@ $(document).ready(function() {
     var query = encodeURIComponent($("#myInput").val().trim());
     var url = "https://effective-pancake.firebaseio.com/directory.json?orderBy=\"full_name\"&equalTo=\"" + query + "\"";
     $("#displayTabs li:last-child a").tab('show');
-    $("#display > div").remove();
+    $("#default-message").text("");
+    $("#items").empty();
 
     getData(url);
 
