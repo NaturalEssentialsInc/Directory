@@ -259,6 +259,7 @@ $(document).ready(function() {
             email = email + ", " + x[i].additional_email;
           }
           let department = x[i].department;
+          let position = x[i].job;
           let extension = x[i].extension;
           if (x[i].additional_extension !== "") {
             extension = extension + ", " + x[i].additional_extension;
@@ -267,7 +268,8 @@ $(document).ready(function() {
 
           $("#items").append("<tr><th scope='row'>Name:    </td><td>" +
             name + "</td></tr><tr><th scope='row'>Department:    </td><td>" +
-            department + "</td></tr><tr><th scope='row'>Location:    </td><td>" +
+            department + "</td></tr><tr><th scope='row'>Position:    </td><td>" +
+            position + "</td></tr><tr><th scope='row'>Location:    </td><td>" +
             location + "</td></tr><tr><th scope='row'>Email:    </td><td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + email +"' target='blank'>" + 
             email + "</a></td></tr><tr><th scope='row'>Extension:    </td><td>" +
             extension + "</td></tr><tr><td colspan='2'><hr /></td></tr>");
