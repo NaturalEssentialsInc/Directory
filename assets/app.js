@@ -125,7 +125,7 @@ $(document).ready(function() {
                                            "<td>" + department + "</td>" +
                                            "<td>" + location + "</td>" +                                           
                                          "</tr>"):
-                          $("#directory-table > tbody").prepend("<tr>" + 
+                        $("#directory-table > tbody").prepend("<tr>" + 
                                            "<td>" + lastName + ",</td>" +
                                            "<td>" + firstName + "</td>" +
                                            "<td>" + department + "</td>" +
@@ -140,7 +140,7 @@ $(document).ready(function() {
                                            "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + additional +"' target='blank'>" + additional + "</td>" +
                                            "<td>" + extension + "</td>" +
                                          "</tr>"):
-                      $("#contact-table > tbody").prepend("<tr>" + 
+                          $("#contact-table > tbody").prepend("<tr>" + 
                                            "<td>" + lastName + "</td>" +
                                            "<td>" + firstName + "</td>" +                                           
                                            "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + email +"' target='blank'>" + email + "</a></td>" +
@@ -198,6 +198,7 @@ $(document).ready(function() {
     var url = "https://effective-pancake.firebaseio.com/directory.json?orderBy=\"full_name\"&equalTo=\"" + query + "\"";
     $("#displayTabs li:last-child a").tab('show');
     $("#default-message").text("");
+    // $("#default-message").append("<div class='container'><buttonid='exportButton' class='btn btn-lg btn-danger clearfix'>Export to PDF</button></div>");    
     $("#items").empty();
     // console.log("url: " + url);
     getData(url);
@@ -233,6 +234,60 @@ $(document).ready(function() {
 
     $("#myInput4").val("");
 
+  });
+
+  $("#exportbutton").click(function () {
+    console.log("click, click, BOOM!");
+    // parse the HTML table element having an id=hiddenTable
+    var dataSource = shield.DataSource.create({
+      data: "#hiddenTable",
+      schema: {
+        type: "table",
+        fields: {
+          Name: { type: String },
+          Department: { type: String },
+          Position: { type: String },
+          Location: { type: String },
+          Email: { type: String },          
+          Extension: { type: String }
+        }
+      }
+    });
+
+    // when parsing is done, export the data to PDF
+    dataSource.read().then(function (data) {
+      var pdf = new shield.exp.PDFDocument({
+        author: "Company Directory",
+        created: new Date(),
+        fontSize: 8
+      });
+
+      pdf.addPage("a4", "landscape");
+
+      pdf.table(
+        50,
+        50,
+        data,
+        [
+          { field: "Name", title: "Name", width: 90 },
+          { field: "Department", title: "Department", width: 155 },
+          { field: "Position", title: "Position", width: 75 },
+          { field: "Location", title: "Location", width: 150 },
+          { field: "Email", title: "Email", width: 205 },
+          { field: "Extension", title: "Extension", width: 60 }
+        ],
+        {
+          margins: {
+            top: 50,
+            left: 50
+          }
+        }
+      );
+
+      pdf.saveAs({
+        fileName: "DirectoryPDF"
+      });
+    });
   });
 
   function getData(url) {
@@ -273,11 +328,15 @@ $(document).ready(function() {
             location + "</td></tr><tr><th scope='row'>Email:    </td><td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + email +"' target='blank'>" + 
             email + "</a></td></tr><tr><th scope='row'>Extension:    </td><td>" +
             extension + "</td></tr><tr><td colspan='2'><hr /></td></tr>");
+
+          $("#hiddenItems").append("<tr><td>" + name + "</td><td>" + department + "</td><td>" + position + "</td><td>" + location + "</td><td>" + email + "</td><td>" + extension + "</td></tr>");
         };
 
       }
 
     });
+
+    $("#exportbutton").show();
 
   };
 
