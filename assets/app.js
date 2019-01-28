@@ -271,10 +271,10 @@ $(document).ready(function() {
         [
           { field: "Name", title: "Name", width: 90 },
           { field: "Department", title: "Department", width: 155 },
-          { field: "Position", title: "Position", width: 75 },
-          { field: "Location", title: "Location", width: 150 },
-          { field: "Email", title: "Email", width: 205 },
-          { field: "Extension", title: "Extension", width: 60 }
+          { field: "Position", title: "Position", width: 100 },
+          { field: "Location", title: "Location", width: 170 },
+          { field: "Email", title: "Email", width: 180 },
+          { field: "Extension", title: "Extension", width: 40 }
         ],
         {
           margins: {
