@@ -12,18 +12,31 @@ a.report:link, a.report:visited, a.report:hover, a.report:active {
 	text-decoration: none;
 }
 
+footer {
+	border-top: 1px solid gray;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
+}
+
+nav {
+	border-bottom: 1px solid gray;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 .head {
   background-image: url('../assets/images/clean-gray-paper.png');
 }
 
 .footer {
   background-image: url('../assets/images/clean-gray-paper.png');	
-  height: 100px;
 }
 
 .masthead {
 	text-align: center;
 	padding: 40px 0px 20px 0px;
+}
+
+.navbar-brand {
+	margin-right: 0px;
 }
 
 .results-table {
@@ -39,8 +52,8 @@ a.report:link, a.report:visited, a.report:hover, a.report:active {
 	border-left: 1px solid #dee2e6;
 	border-right: 1px solid #dee2e6;
 	border-bottom: 1px solid #dee2e6;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
-  margin-bottom: 50px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
+    margin-bottom: 50px;
 }
 
 .table-label {
@@ -52,7 +65,7 @@ a.report:link, a.report:visited, a.report:hover, a.report:active {
 	margin-bottom: 30px;
 	background-color: #f4fcff;
 	border: 1px solid skyblue;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
 }
 
 #display {
