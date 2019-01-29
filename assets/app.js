@@ -185,6 +185,7 @@ $(document).ready(function() {
     $("#displayTabs li:last-child a").tab('show');
     $("#default-message").text("");
     $("#items").empty();
+    $("#hiddenItems").empty();
 
     getData(url);
 
@@ -200,6 +201,7 @@ $(document).ready(function() {
     $("#default-message").text("");
     // $("#default-message").append("<div class='container'><buttonid='exportButton' class='btn btn-lg btn-danger clearfix'>Export to PDF</button></div>");    
     $("#items").empty();
+    $("#hiddenItems").empty();
     // console.log("url: " + url);
     getData(url);
 
@@ -215,6 +217,7 @@ $(document).ready(function() {
     $("#displayTabs li:last-child a").tab('show');
     $("#default-message").text("");
     $("#items").empty();
+    $("#hiddenItems").empty();
     // console.log("url: " + url);
     getData(url);
 
@@ -229,6 +232,7 @@ $(document).ready(function() {
     $("#displayTabs li:last-child a").tab('show');
     $("#default-message").text("");
     $("#items").empty();
+    $("#hiddenItems").empty();
     console.log("url: " + url);
     getData(url);
 
