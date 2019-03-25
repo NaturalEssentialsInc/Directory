@@ -34,6 +34,9 @@
 				  <li class="nav-item nav-fill">
 				    <a class="nav-link" id="search-tab" data-toggle="tab" href="#search-results" role="tab" aria-controls="search-results" aria-selected="false">Find</a>
 				  </li>
+				  <li class="nav-item nav-fill">
+				    <a class="nav-link" id="docs-tab" data-toggle="tab" href="#docs-results" role="tab" aria-controls="docs-results" aria-selected="false">Documents</a>
+				  </li>
 				</ul>
 		    <form class="form-inline my-2 my-lg-0">
 		      <input id="myInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -125,6 +128,46 @@
 						</div>	
 					</div>				
 				</div>
+				<div class="tab-pane fade results-table" id="docs-results" role="tabpanel" aria-labelledby="docs-results-tab">
+					<div class="container">
+						<h2 class="text-center table-label">Documents</h2>
+						<hr />	
+						<div class="container">
+							<ul>
+								<li><a href="#" class="docs-links" target="_blank" data-toggle="modal" data-target="#handbookModal">Employee Handbook</a></li>
+								<span class="text-muted">The employee handbook for Natural Essentials/Bulk Apothecary </span>
+								<li><a href="#" class="docs-links" target="_blank" data-toggle="modal" data-target="#extensionsModal">Extensions List</a></li>
+								<span class="text-muted">A current formatted-for-printing company extensions list. </span>
+							</ul>
+							<br />
+							<hr />
+						</div>
+						<h2 class="text-center table-label">Links</h2>
+						<hr />	
+						<div class="container">
+							<ul>
+								<li><a href="https://sites.google.com/bulkapothecary.com/fulfillment-training/" target="_blank" class="docs-links">Fufillment Training</a></li>
+								<span class="text-muted">A link to our fufillment training pages. </span>
+								<li><a href="https://access.paylocity.com" target="_blank" class="docs-links">Paylocity</a></li>
+								<span class="text-muted">Clock in and out as well as check your hours at paylocity.</span>
+								<li><a href="https://sites.google.com/bulkapothecary.com/statuspages/home" target="_blank" class="docs-links">Status Pages</a></li>
+								<span class="text-muted">View the official status pages to several services we use.</span>
+							</ul>
+							<br />
+							<hr />
+						</div>
+						<h2 class="text-center table-label">Forms</h2>
+						<hr />	
+						<div class="container">
+							<ul>
+								<li><a href="https://naturalessentialsinc.github.io/Purchase-Requisitions/" target="_blank" class="docs-links">Purchase Requisitions</a></li>
+								<span class="text-muted">A link to the purchase requistions form for Natural Essentials. </span>
+							</ul>
+							<br />
+							<hr />
+						</div>		
+					</div>				
+				</div>
 			</div>			
 		</div>
 		<!-- Modal -->
@@ -149,14 +192,61 @@
 		    </div>
 		  </div>
 		</div>
+		<div class="modal fade" id="handbookModal" tabindex="-1" role="dialog" aria-labelledby="handbookModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="handbookModalLabel">Employee Handbook</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="embed-responsive embed-responsive-1by1">
+					<iframe src="https://drive.google.com/file/d/0B2ilpbbRnvdtbnJXN2YyTFlrM1BwWnowMEdwQTgtZzhqaDk0/preview" width="640" height="480"></iframe>
+		    	</div>
+		    	<a href="https://drive.google.com/file/d/0B2ilpbbRnvdtbnJXN2YyTFlrM1BwWnowMEdwQTgtZzhqaDk0/view?usp=sharing" target="_blank">Export as a PDF</a>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 		<footer class="footer mt-auto py-3 bg-light">
 			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<span class="text-muted footer-labels">Documents</span>
+						<hr class="hr-footer" />
+					</div>
+					<div class="col-sm-6">
+						<span class="text-muted footer-labels">Contact</span>
+						<hr class="hr-footer"/>
+					</div>					
+				</div>
 				<div class="row">
 					<div class="col-sm-6">
 						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#extensionsModal">Extensions List</a></span>
 					</div>
 					<div class="col-sm-6">
 						<span class="text-muted"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=goodnight.ian@gmail.com" target="_blank" class="report">Report Issues</a></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#handbookModal">Employee Handbook</a></span>						
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<span class="text-muted footer-labels">Links</span>
+						<hr class="hr-footer"/>						
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<span class="text-muted"><a href="https://sites.google.com/bulkapothecary.com/fulfillment-training/" target="_blank" class="report">Fufillment Training</a></span>						
 					</div>
 				</div>
 				<div class="row">
@@ -171,7 +261,8 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-6">
-						<span class="text-muted"><a href="https://sites.google.com/bulkapothecary.com/fulfillment-training/" target="_blank" class="report">Fufillment Training</a></span>						
+						<span class="text-muted footer-labels">Forms</span>
+						<hr class="hr-footer"/>						
 					</div>
 				</div>
 				<div class="row">

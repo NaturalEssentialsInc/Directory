@@ -12,6 +12,12 @@ a.report:link, a.report:visited, a.report:hover, a.report:active {
 	text-decoration: none;
 }
 
+a.docs-links:link, a.docs-links:visited, a.docs-links:hover, a.docs-links:active {
+	text-decoration: none;
+	color: black;
+	font-size: 1.5rem;
+}
+
 footer {
 	border-top: 1px solid gray;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);	
@@ -26,8 +32,17 @@ nav {
   background-image: url('../assets/images/clean-gray-paper.png');
 }
 
+.hr-footer {
+	margin-top:2px;
+	margin-bottom:2px;
+}
+
 .footer {
   background-image: url('../assets/images/clean-gray-paper.png');	
+}
+
+.footer-labels {
+	font-weight: bold;
 }
 
 .masthead {
