@@ -21,10 +21,24 @@ $(document).ready(function() {
   let autoLocation = [];
   let autoId = 1;
 
-  // db.ref().on("value", function(snapshot) {
-  //   console.log(snapshot.val());
+  var win = $(this);
 
-  // });
+  if (win.width() < 993) {
+    $('#search-bar').hide();
+  } else {
+    $('#search-bar').show();
+  }
+
+  $(window).on('resize', function() {
+
+    if (win.width() < 993) {
+      $('#search-bar').hide();
+    } else {
+      $('#search-bar').show();
+    }
+  });
+
+
   function clearTables() {
     $("#directory-table > tbody").empty();
     $("#contact-table > tbody").empty();   

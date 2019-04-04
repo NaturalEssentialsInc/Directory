@@ -38,7 +38,7 @@
 				    <a class="nav-link" id="search-tab" data-toggle="tab" href="#search-results" role="tab" aria-controls="search-results" aria-selected="false">Find</a>
 				  </li>
 				</ul>
-		    <form class="form-inline my-2 my-lg-0">
+		    <form class="form-inline my-2 my-lg-0" id="search-bar">
 		      <input id="myInput" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 		      <input type="hidden" id="hidden-field">
 		      <button class="btn btn-outline-success my-2 my-sm-0 search" id="search" type="submit">Search</button>
@@ -128,6 +128,11 @@
 						</div>	
 					</div>				
 				</div>
+
+				<!-- --------------------------------------------------------------------- -->
+				<!-- Documents Tab -->
+				<!-- --------------------------------------------------------------------- -->
+
 				<div class="tab-pane fade results-table" id="docs-results" role="tabpanel" aria-labelledby="docs-results-tab">
 					<div class="container">
 						<h2 class="text-center table-label">Documents</h2>
@@ -138,6 +143,10 @@
 								<span class="text-muted">The employee handbook for Natural Essentials/Bulk Apothecary </span>
 								<li><a href="#" class="docs-links" target="_blank" data-toggle="modal" data-target="#extensionsModal">Extensions List</a></li>
 								<span class="text-muted">A current formatted-for-printing company extensions list. </span>
+								<li><a href="#" class="docs-links" target="_blank" data-toggle="modal" data-target="#payCalendarModal">Pay Calendar (2019)</a></li>
+								<span class="text-muted">A calendar of the pay-days and holidays for 2019. </span>
+								<li><a href="#" class="docs-links" target="_blank" data-toggle="modal" data-target="#paylocityInstructionsModal">Paylocity - Direct Deposit Instructions</a></li>
+								<span class="text-muted">Instructions on the procedure to set up, change, or cancel your direct deposits. </span>
 							</ul>
 							<br />
 							<hr />
@@ -160,6 +169,10 @@
 						<hr />	
 						<div class="container">
 							<ul>
+								<li><a href="#" target="_blank" class="docs-links" data-toggle="modal" data-target="#w4Modal">Form W4 (2019)</a></li>
+								<span class="text-muted">A downloadable copy of Form W-4 (2019)</span>
+								<li><a href="#" class="docs-links" target="_blank" data-toggle="modal" data-target="#expenseModal">Natural Essentials Inc. - Expense Report</a></li>
+								<span class="text-muted">A downloadable copy of the Natural Essentials Inc. - Expense Report.</span>
 								<li><a href="#" class="docs-links" target="_blank" data-toggle="modal" data-target="#newEmployeeModal">New Employee Form</a></li>
 								<span class="text-muted">Account setups and IT requests for new employees.</span>
 								<li><a href="https://naturalessentialsinc.github.io/Purchase-Requisitions/" target="_blank" class="docs-links">Purchase Requisitions</a></li>
@@ -172,7 +185,12 @@
 				</div>
 			</div>			
 		</div>
-		<!-- Modal -->
+
+		<!-- ------------------------------------------------------ -->
+		<!-- Modals -->
+		<!-- ------------------------------------------------------ -->
+
+		<!-- Internal Extensions Modal -->
 		<div class="modal fade" id="extensionsModal" tabindex="-1" role="dialog" aria-labelledby="extensionsModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-lg" role="document">
 		    <div class="modal-content">
@@ -194,6 +212,8 @@
 		    </div>
 		  </div>
 		</div>
+
+		<!-- Employee Handbook (Modal) -->
 		<div class="modal fade" id="handbookModal" tabindex="-1" role="dialog" aria-labelledby="handbookModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-lg" role="document">
 		    <div class="modal-content">
@@ -215,6 +235,77 @@
 		    </div>
 		  </div>
 		</div>
+
+		<!-- Pay Calendar (Modal) -->
+		<div class="modal fade" id="payCalendarModal" tabindex="-1" role="dialog" aria-labelledby="payCalendarModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="payCalendarModalLabel">Pay Calendar (2019)</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="embed-responsive embed-responsive-4by3">
+					<iframe src="https://drive.google.com/file/d/0B2ilpbbRnvdtOVRHVU1OTlktc3VuMHNYQmdRTDZlUjNGRnJj/preview" width="640" height="480"></iframe>
+		    	</div>
+		    	<a href="https://drive.google.com/file/d/0B2ilpbbRnvdtOVRHVU1OTlktc3VuMHNYQmdRTDZlUjNGRnJj/view?usp=sharing" target="_blank">Export as a PDF</a>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- Paylocity - Direct Deposit Instructions (Modal) -->
+		<div class="modal fade" id="paylocityInstructionsModal" tabindex="-1" role="dialog" aria-labelledby="paylocityInstructionsModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="paylocityInstructionsModalLabel">Paylocity - Direct Deposit Instructions</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="embed-responsive embed-responsive-4by3">
+							<iframe src="https://drive.google.com/file/d/0B2ilpbbRnvdtbFUwenAzcGJWd0ZfejZTSzZxMVl0UDlQeGpB/preview" width="640" height="480"></iframe>
+		    		</div>
+		    		<a href="https://drive.google.com/file/d/0B2ilpbbRnvdtbFUwenAzcGJWd0ZfejZTSzZxMVl0UDlQeGpB/view?usp=sharing" target="_blank">Export as a PDF</a>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- Expense Report (Modal) -->
+		<div class="modal fade" id="expenseModal" tabindex="-1" role="dialog" aria-labelledby="expenseModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="expenseModalLabel">Natural Essentials Inc. - Expense Report</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="embed-responsive embed-responsive-4by3">
+						<iframe src="https://drive.google.com/file/d/0B2ilpbbRnvdtend3ZHZzV29VdjMwazZXSVFUMER6YWdCcmFN/preview" width="640" height="480"></iframe>
+		    		</div>
+		    		<a href="https://drive.google.com/file/d/0B2ilpbbRnvdtend3ZHZzV29VdjMwazZXSVFUMER6YWdCcmFN/view?usp=sharing" target="_blank">Export as a PDF</a>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>		
+
+		<!-- New Employee Form (Modal) -->
 		<div class="modal fade" id="newEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="newEmployeeModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-lg" role="document">
 		    <div class="modal-content">
@@ -226,8 +317,8 @@
 		      </div>
 		      <div class="modal-body">
 		      	<div class="embed-responsive embed-responsive-4by3">
-					<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfwUs0mRImKsAvJebH9h9eISdibS5KFnL9k-7cUibFYEESZzw/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
-		    	</div>
+							<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfwUs0mRImKsAvJebH9h9eISdibS5KFnL9k-7cUibFYEESZzw/viewform?embedded=true" width="700" height="520" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+		    		</div>
 		      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -235,6 +326,34 @@
 		    </div>
 		  </div>
 		</div>
+
+		<!-- W-4 (Modal) -->
+		<div class="modal fade" id="w4Modal" tabindex="-1" role="dialog" aria-labelledby="w4ModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="w4ModalLabel">Form W-4 (2019)</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="embed-responsive embed-responsive-4by3">
+							<iframe src="https://drive.google.com/file/d/0B2ilpbbRnvdtcDlFODg4UVd3MW80eWpnUVpQQlBIa1pvRWhF/preview" width="640" height="480"></iframe>
+		    		</div>
+		    		<a href="https://drive.google.com/file/d/0B2ilpbbRnvdtcDlFODg4UVd3MW80eWpnUVpQQlBIa1pvRWhF/view?usp=sharing" target="_blank">Export as a PDF</a>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+
+		<!-- --------------------------------------------------------------------------------- -->
+		<!--  Begin Footer -->
+		<!-- --------------------------------------------------------------------------------- -->
+		
 		<footer class="footer mt-auto py-3 bg-light">
 			<div class="container">
 				<div class="row">
@@ -249,7 +368,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-6">
-						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#extensionsModal">Extensions List</a></span>
+						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#handbookModal">Employee Handbook</a></span>
 					</div>
 					<div class="col-sm-6">
 						<span class="text-muted"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=information-technology@bualkapothecary.com" target="_blank" class="report">Information Technology</a></span>
@@ -257,7 +376,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-6">
-						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#handbookModal">Employee Handbook</a></span>						
+						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#extensionsModal">Extensions List</a></span>						
 					</div>
 					<div class="col-sm-6">
 						<span class="text-muted"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=hr@naturalessentialsinc.com" target="_blank" class="report">Human Resources</a></span>
@@ -265,11 +384,21 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-6">
-						<span class="text-muted footer-labels">Links</span>
-						<hr class="hr-footer"/>						
+						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#payCalendarModal">Pay Calendar (2019)</a></span>					
 					</div>
 					<div class="col-sm-6">
 						<span class="text-muted"><a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=ian.goodnight@bulkapothecary.com" target="_blank" class="report">Report Issues</a></span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#paylocityInstructionsModal">Paylocity - Direct Deposit Instructions</a></span>					
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<span class="text-muted footer-labels">Links</span>
+						<hr class="hr-footer"/>							
 					</div>
 				</div>
 				<div class="row">
@@ -291,6 +420,16 @@
 					<div class="col-sm-6">
 						<span class="text-muted footer-labels">Forms</span>
 						<hr class="hr-footer"/>						
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#w4Modal">Form W-4 (2019)</a></span>				
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#expenseModal">Natural Essentials Inc. - Expense Report</a></span>				
 					</div>
 				</div>
 				<div class="row">
