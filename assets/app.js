@@ -152,14 +152,14 @@ $(document).ready(function() {
                                            "<td>" + firstName + "</td>" +
                                            "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + email +"' target='blank'>" + email + "</a></td>" +
                                            "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + additional +"' target='blank'>" + additional + "</td>" +
-                                           "<td>" + extension + "</td>" +
+                                           // "<td>" + extension + "</td>" +
                                          "</tr>"):
                           $("#contact-table > tbody").prepend("<tr>" + 
                                            "<td>" + lastName + "</td>" +
                                            "<td>" + firstName + "</td>" +                                           
                                            "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + email +"' target='blank'>" + email + "</a></td>" +
                                            "<td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + additional +"' target='blank'>" + additional + "</td>" +
-                                           "<td>" + extension + "</td>" +
+                                           // "<td>" + extension + "</td>" +
                                          "</tr>");
       };
 
@@ -267,7 +267,7 @@ $(document).ready(function() {
           Position: { type: String },
           Location: { type: String },
           Email: { type: String },          
-          Extension: { type: String }
+          // Extension: { type: String }
         }
       }
     });
@@ -292,7 +292,7 @@ $(document).ready(function() {
           { field: "Position", title: "Position", width: 100 },
           { field: "Location", title: "Location", width: 170 },
           { field: "Email", title: "Email", width: 180 },
-          { field: "Extension", title: "Extension", width: 40 }
+          // { field: "Extension", title: "Extension", width: 40 }
         ],
         {
           margins: {
@@ -333,10 +333,10 @@ $(document).ready(function() {
           }
           let department = x[i].department;
           let position = x[i].job;
-          let extension = x[i].extension;
-          if (x[i].additional_extension !== "") {
-            extension = extension + ", " + x[i].additional_extension;
-          }
+          // let extension = x[i].extension;
+          // if (x[i].additional_extension !== "") {
+          //   extension = extension + ", " + x[i].additional_extension;
+          // }
           let location = x[i].building_location;
 
           $("#items").append("<tr><th scope='row'>Name:    </td><td>" +
@@ -344,10 +344,10 @@ $(document).ready(function() {
             department + "</td></tr><tr><th scope='row'>Position:    </td><td>" +
             position + "</td></tr><tr><th scope='row'>Location:    </td><td>" +
             location + "</td></tr><tr><th scope='row'>Email:    </td><td><a href='https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=" + email +"' target='blank'>" + 
-            email + "</a></td></tr><tr><th scope='row'>Extension:    </td><td>" +
-            extension + "</td></tr><tr><td colspan='2'><hr /></td></tr>");
+            email + "</a></td></tr><tr><th scope='row'></td><td>" +
+            /*extension + "</td></tr><tr><td colspan='2'><hr /></td></tr>"*/"");
 
-          $("#hiddenItems").append("<tr><td>" + name + "</td><td>" + department + "</td><td>" + position + "</td><td>" + location + "</td><td>" + email + "</td><td>" + extension + "</td></tr>");
+          $("#hiddenItems").append("<tr><td>" + name + "</td><td>" + department + "</td><td>" + position + "</td><td>" + location + "</td><td>" + email + "</td></tr>");
         };
 
       }
