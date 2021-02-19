@@ -170,6 +170,8 @@
 							<ul>
 								<li><a href="#" target="_blank" class="docs-links" data-toggle="modal" data-target="#w4Modal">Form W4 (2021)</a></li>
 								<span class="text-muted">A downloadable copy of Form W-4 (2021)</span>
+								<li><a href="#" target="_blank" class="docs-links" data-toggle="modal" data-target="#requestOffModal">Request Time Off</a></li>
+								<span class="text-muted">Request time off form</span>
 								<li><a href="#" target="_blank" class="docs-links" data-toggle="modal" data-target="#personalDataChangeModal">Personal Data Change</a></li>
 								<span class="text-muted">A downloadable copy of the Personal Data Change Form</span>
 								<li><a href="#" class="docs-links" target="_blank" data-toggle="modal" data-target="#expenseModal">Natural Essentials Inc. - Expense Report</a></li>
@@ -238,7 +240,28 @@
 		    </div>
 		  </div>
 		</div>
-
+		<!-- Request off (Modal) -->
+		<div class="modal fade" id="requestOffModal" tabindex="-1" role="dialog" aria-labelledby="requestOffModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="requestOffModalLabel">Request Time Off</h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<div class="embed-responsive embed-responsive-4by3">
+					<iframe src="https://drive.google.com/file/d/1lKEuh8ck3Q4ijjJb7QsgaSvcUMAUyuqu/preview" width="640" height="480"></iframe>
+		    	</div>
+		    	<a href="https://drive.google.com/file/d/1lKEuh8ck3Q4ijjJb7QsgaSvcUMAUyuqu/view?usp=sharing" target="_blank">Export as a PDF</a>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
 		<!-- Personal Data Change (Modal) -->
 		<div class="modal fade" id="personalDataChangeModal" tabindex="-1" role="dialog" aria-labelledby="personalDataChangeModalLabel" aria-hidden="true">
 		  <div class="modal-dialog modal-lg" role="document">
@@ -470,6 +493,11 @@
 				<div class="row">
 					<div class="col-sm-6">
 						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#w4Modal">Form W-4 (2021)</a></span>				
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<span class="text-muted"><a href="#" target="_blank" class="report" data-toggle="modal" data-target="#requestOffModal">Time Off Request Form</a></span>
 					</div>
 				</div>
 				<div class="row">
